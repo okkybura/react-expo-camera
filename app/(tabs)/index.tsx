@@ -1,6 +1,7 @@
 import { useNavigation } from '@react-navigation/native';
 import { useEffect, useRef, useState } from 'react';
 import {
+  Button,
   Image,
   SafeAreaView,
   StyleSheet,
@@ -10,12 +11,13 @@ import {
 } from 'react-native';
 
 import { Ionicons } from '@expo/vector-icons';
-import { CameraType, CameraView } from 'expo-camera';
+import { CameraType, CameraView, useCameraPermissions } from 'expo-camera';
 import * as ImagePicker from 'expo-image-picker';
 import * as MediaLibrary from 'expo-media-library';
 import { Stack } from 'expo-router';
 
 export default function Camera() {
+  const [cameraPermission, requestCameraPermission] = useCameraPermissions();
   const [mediaPermissionResponse, requestMediaPermission] = MediaLibrary.usePermissions();
 
   const [facing, setFacing] = useState<CameraType>('back');
@@ -80,6 +82,25 @@ export default function Camera() {
 
   function toggleXY() {
     setToggleValue(prev => (prev === 'X' ? 'Y' : 'X'));
+  }
+
+  if (!cameraPermission) {
+    return (
+      <SafeAreaView style={styles.containerCamera}>
+        <Text style={{ color: 'white', textAlign: 'center' }}>Loading camera...</Text>
+      </SafeAreaView>
+    );
+  }
+
+  if (!cameraPermission.granted) {
+    return (
+      <SafeAreaView style={styles.containerCamera}>
+        <Text style={{ color: 'white', textAlign: 'center', marginBottom: 10 }}>
+          We need your permission to access the camera
+        </Text>
+        <Button onPress={requestCameraPermission} title="Grant Camera Permission" />
+      </SafeAreaView>
+    );
   }
 
   return (
