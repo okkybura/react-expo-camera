@@ -178,7 +178,7 @@ const styles = StyleSheet.create({
   },
   camera: {
     flex: 1,
-    paddingBottom: 150,
+    paddingBottom: 130,
   },
 
   containerControl: {
@@ -186,12 +186,14 @@ const styles = StyleSheet.create({
     bottom: 0,
     left: 0,
     right: 0,
-    height: 150,
+    height: 130,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
     backgroundColor: '#121212',
     paddingHorizontal: 25,
+    paddingTop: 15,
+    paddingBottom: 30,
   },
 
   controlCameraGallery: {
@@ -227,7 +229,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   cameraFacingIcon: {
-    fontSize: 45,
+    fontSize: 47.5,
     color: '#FFFFFF',
   },
 
@@ -236,8 +238,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     zIndex: 10,
-    width: 40,
-    height: 40,
+    width: 35,
+    height: 35,
     top: 20,
     left: 20,
     borderWidth: 1,
@@ -246,7 +248,7 @@ const styles = StyleSheet.create({
   },
 
   cameraFlashIcon: {
-    fontSize: 20,
+    fontSize: 17.5,
     color: '#FFFFFF',
   },
 
@@ -269,7 +271,7 @@ const styles = StyleSheet.create({
   containerToggleXY: {
     position: 'absolute',
     flexDirection: 'row',
-    bottom: 170,
+    bottom: 135,
     overflow: 'hidden',
     backgroundColor: 'rgba(0, 0, 0, 0.25)',
     borderRadius: 100,
